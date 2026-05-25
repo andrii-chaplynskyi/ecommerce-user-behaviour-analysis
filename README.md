@@ -77,7 +77,7 @@ Tableau Public dashboard: [View on Tableau Public](https://public.tableau.com/sh
 
 ## How to Run
 
-1. Clone the repository and open the notebook in Jupyter or Google Colab.
+1. Clone the repository and open the notebook in Google Colab.
 2. Install dependencies: `pip install -r requirements.txt`.
 3. Authenticate with Google Cloud (`gcloud auth application-default login`) and ensure the BigQuery dataset is accessible.
 4. Run the notebook top to bottom. Cells are ordered so each section can be read independently.
