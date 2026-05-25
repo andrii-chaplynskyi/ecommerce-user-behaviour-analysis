@@ -55,27 +55,25 @@ All numbers below are taken directly from the notebook outputs on the dataset de
 
 - **Revenue is heavily concentrated in the Americas.** The Americas account for ~17.7M in sales, Asia ~7.6M, Europe ~5.9M over the 3-month window. The United States alone contributes ~13.9M, roughly 5x the next country (India, ~2.8M).
 - **Desktop still dominates revenue.** Desktop sessions drive 59.0% of revenue, mobile 38.7%, tablet 2.3%, despite mobile usually being assumed dominant in modern e-commerce traffic.
-- **Organic Search is the largest revenue channel.** Organic Search delivers 35.8% of revenue, Paid Search 26.6%, Direct 23.4%, Social Search 7.9%. The paid-to-organic ratio is worth a discussion with the marketing team given how much unpaid traffic the site already converts.
+- **Organic Search is the largest revenue channel.** Organic Search delivers 35.8% of revenue, Paid Search 26.6%, Direct 23.4%, Social Search 7.9%.
 - **Email funnel is leaky but not catastrophic.** Of registered users, 71.7% have verified their email and 16.9% have unsubscribed from marketing communications.
-- **Unsubscribing is not the revenue red flag it looks like.** Median per-user spend is marginally higher for unsubscribed users (450) than for still-subscribed users (395), but a Mann-Whitney U test returns p = 0.168, so the difference is not statistically significant on this sample.
-- **Daily sessions and daily revenue move together.** Pearson and Spearman correlations between daily sessions and daily revenue are positive and statistically significant, which supports using session volume as a leading indicator for revenue at the daily level (see notebook Block 8 for the exact coefficients and p-values).
+- **Unsubscribing is not the revenue red flag it looks like.** Median per-user spend is marginally higher for unsubscribed users (450) than for still-subscribed users (395), but a Mann-Whitney U test returns p = 0.168 — not statistically significant on this sample.
+- **Daily sessions and daily revenue move together.** Pearson and Spearman correlations between daily sessions and daily revenue are positive and statistically significant, supporting the use of session volume as a leading indicator for revenue.
 - **Top-5 countries by registered users mirror revenue distribution.** United States (12,384), India (2,687), Canada (2,067), United Kingdom (859), France (553).
 
-The notebook contains the complete output for each test, including the cases where the result is "no significant difference" — these are kept rather than filtered out, because a negative result is still a result for stakeholders.
+The notebook contains the complete output for each test, including cases where the result is "no significant difference" — these are kept rather than filtered out, because a negative result is still a result for stakeholders.
 
 ## Dashboard
 
-Tableau Public dashboard: https://public.tableau.com/shared/4435X9XPB?:display_count=n&:origin=viz_share_link
-
-TODO: screenshots of the final Tableau views can be added under `assets/` once the dashboard layout is locked.
+Tableau Public dashboard: [View on Tableau Public](https://public.tableau.com/shared/4435X9XPB?:display_count=n&:origin=viz_share_link)
 
 ## Limitations
 
 - The dataset is a training dataset, not real production data — magnitudes should not be interpreted as a real business, only the relative patterns and the workflow.
-- The observation window is only ~3 months (Nov 2020 – Jan 2021), which overlaps with Black Friday and the winter holiday peak. The seasonal pattern is therefore only partially observable and should not be generalised to a full year.
+- The observation window is only ~3 months (Nov 2020 – Jan 2021), which overlaps with Black Friday and the winter holiday peak. Seasonal patterns are therefore only partially observable.
 - About one-third of rows have `language` missing and a large share have no `registered_user_id`, which is normal for session-level data but constrains user-level analyses.
 - Some `channel` and `traffic_source` values are `Undefined`, `(none)`, `<Other>` or `(data deleted)`; these are kept as-is rather than re-mapped, to avoid implicit assumptions about source attribution.
-- The notebook is not auto-rerun in CI; it depends on Google BigQuery credentials, so reviewers without access should read the saved outputs in-place rather than re-executing.
+- The notebook depends on Google BigQuery credentials; reviewers without access should read the saved outputs in-place rather than re-executing.
 
 ## How to Run
 
@@ -97,13 +95,6 @@ To review without running: open `notebooks/ecommerce_user_behaviour_analysis.ipy
 └── notebooks/
     └── ecommerce_user_behaviour_analysis.ipynb
 ```
-
-## Next Improvements
-
-- Add screenshots of the final Tableau dashboard under `assets/` so the README is informative even without opening the dashboard.
-- Refactor the longer notebook cells into a small `src/` helper module so the analysis logic is reusable and individually testable.
-- Replace ad-hoc colour choices with a single consistent palette across all charts.
-- Add a short executive-summary cell at the top of the notebook that mirrors the README findings, so the notebook is also self-contained.
 
 ## Portfolio Positioning
 
